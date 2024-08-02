@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import JsonInput from './components/JsonInput';
-import Dropdown from './components/Dropdown';
-import ResponseDisplay from './components/ResponseDisplay';
+import JsonInput from './JsonInput';
+import Dropdown from './Dropdown';
+import ResponseDisplay from './ResponseDisplay';
 import './App.css';
 
 const App = () => {
