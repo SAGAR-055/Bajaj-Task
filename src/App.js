@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import JsonInput from './components/JsonInput';
+import Dropdown from './components/Dropdown';
+import ResponseDisplay from './components/ResponseDisplay';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  useEffect(() => {
+    document.title = 'ABCD123'; // Set the title to your roll number
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Backend Response App</h1>
+      <JsonInput setResponse={setResponse} setError={setError} />
+      {error && <div className="error">{error}</div>}
+      {response && (
+        <>
+          <Dropdown selectedOptions={selectedOptions} setSelectedOptions={setSelectedOptions} />
+          <ResponseDisplay response={response} selectedOptions={selectedOptions} />
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default App;
